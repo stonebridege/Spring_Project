@@ -70,4 +70,14 @@
         -->
         <property name="machine.machineName" value="aaa"/>
     </bean>
+    <bean id="happyTeam" class="com.stonebridge.domain.HappyTeam">
+        <!-- 调用类的构造器创建对象并同时传入参数值 -->
+        <!-- constructor-arg标签：给构造器对应位置传入参数 -->
+        <!-- index属性：指定当前参数在参数列表中的索引位置 -->
+        <!-- name属性：指定当前参数的参数名 -->
+        <!-- value属性：指定参数值 -->
+        <constructor-arg name="teamName" value="gaysTeam"/>
+        <constructor-arg name="memberCount" value="10"/>
+        <constructor-arg name="memberSalary" value="555.55"/>
+    </bean>
 </beans>
