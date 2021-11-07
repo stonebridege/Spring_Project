@@ -103,4 +103,23 @@
     </bean>
     <bean id="propValue3" class="com.stonebridge.domain.PropValue" p:commonValue="commonValue11111"/>
 
+    <bean id="happyTeam3" class="com.stonebridge.domain.HappyTeam">
+        <property name="memNameList">
+            <list>
+                <value>111a111</value>
+                <value>222w222</value>
+                <value>3333s33</value>
+            </list>
+        </property>
+        <property name="managerMap">
+<!--            <map>-->
+<!--                <entry key="财务部" value="张三"></entry>-->
+<!--                <entry key="行政部" value="李四"></entry>-->
+<!--            </map>-->
+            <props>
+                <prop key="财务部">张三</prop>
+                <prop key="行政部">李四</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
