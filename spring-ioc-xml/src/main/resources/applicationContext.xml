@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!-- 实验一 [重要]创建bean -->
     <!-- bean标签：通过配置bean标签告诉IOC容器需要创建对象的组件是什么 -->
     <!-- id属性：当前bean的唯一标识，设定了这个唯一标识后，在其他地方就可以来引用这个bean -->
@@ -100,5 +101,6 @@
             <value><![CDATA[a < b]]></value>
         </property>
     </bean>
+    <bean id="propValue3" class="com.stonebridge.domain.PropValue" p:commonValue="commonValue11111"/>
 
 </beans>

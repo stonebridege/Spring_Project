@@ -101,4 +101,11 @@ public class IocTest {
 //        PropValue propValue = context.getBean(PropValue.class);
         System.out.println("propValue = " + propValue);
     }
+
+    @Test
+    public void testExperiment10() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        PropValue propValue = (PropValue) context.getBean("propValue3");
+        System.out.println("propValue = " + propValue);
+    }
 }
