@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 实验一 [重要]创建bean -->
+    <!-- bean标签：通过配置bean标签告诉IOC容器需要创建对象的组件是什么 -->
+    <!-- id属性：当前bean的唯一标识，设定了这个唯一标识后，在其他地方就可以来引用这个bean -->
+    <!-- class属性：指定这个bean要配置的组件的全类名 -->
+    <bean id="happyComponent1" class="com.stonebridge.domain.HappyComponent"/>
+
+    <!-- 实验二 [重要]获取bean -->
+    <bean id="happyComponent2" class="com.stonebridge.domain.HappyComponent"/>
+
+    <!-- 实验三 [重要]给bean的属性赋值：setter注入 -->
+    <bean id="happyComponent3" class="com.stonebridge.domain.HappyComponent">
+
+        <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
+        <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关） -->
+        <!-- value属性：指定属性值 -->
+        <property name="name" value="i am very happy"/>
+    </bean>
+    <bean id="happyMachine" class="com.stonebridge.domain.HappyMachine">
+        <property name="machineName" value="makeHappy"/>
+    </bean>
+    <bean id="happyComponent4" class="com.stonebridge.domain.HappyComponent">
+        <!-- 使用外部已经配置好的happyMachine这个bean来给当前组件的happyMachine属性赋值 -->
+        <!-- 引用另外一个bean不能再使用value属性，而要使用ref属性指定bean的id -->
+        <!--
+            如果错把ref属性写成了value属性，会抛出异常：
+            Caused by: java.lang.IllegalStateException: Cannot convert value of type 'java.lang.String' to required type 'com.atguigu.ioc.component.HappyMachine' for property 'happyMachine': no matching editors or conversion strategy found
+            意思是不能把String类型转换成我们要的HappyMachine类型
+            说明我们使用value属性时，Spring只把这个属性看做一个普通的字符串，不会认为这是一个bean的id，更不会根据它去找到bean来赋值
+        -->
+        <property name="machine" ref="happyMachine"/>
+    </bean>
+</beans>
