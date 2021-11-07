@@ -3,6 +3,7 @@ package com.stonebridge.ioc;
 import com.stonebridge.domain.HappyComponent;
 import com.stonebridge.domain.HappyMachine;
 import com.stonebridge.domain.HappyTeam;
+import com.stonebridge.domain.PropValue;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -89,5 +90,15 @@ public class IocTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         HappyTeam happyTeam = context.getBean(HappyTeam.class);
         System.out.println("happyTeam = " + happyTeam);
+    }
+
+    @Test
+    public void testExperiment09() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        PropValue propValue = (PropValue) context.getBean("propValue1");
+
+        PropValue propValue = (PropValue) context.getBean("propValue2");
+//        PropValue propValue = context.getBean(PropValue.class);
+        System.out.println("propValue = " + propValue);
     }
 }
