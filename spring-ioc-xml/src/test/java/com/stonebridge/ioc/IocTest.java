@@ -53,4 +53,13 @@ public class IocTest {
         String machineName = happyMachine.getMachineName();
         System.out.println("machineName = " + machineName);
     }
+
+    @Test
+    public void testExperiment05() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HappyComponent happyComponent5 = (HappyComponent) context.getBean("happyComponent5");
+        HappyMachine happyMachine = happyComponent5.getMachine();
+        String machineName = happyMachine.getMachineName();
+        System.out.println("machineName = " + machineName);
+    }
 }

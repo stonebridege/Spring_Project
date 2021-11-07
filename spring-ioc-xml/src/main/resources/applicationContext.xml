@@ -33,4 +33,15 @@
         -->
         <property name="machine" ref="happyMachine"/>
     </bean>
+    <!-- 实验五 [重要]给bean的属性赋值：内部bean -->
+    <bean id="happyComponent5" class="com.stonebridge.domain.HappyComponent">
+        <property name="machine">
+            <!-- 在property标签内部再配置一个bean，这就是内部bean -->
+            <!-- 内部bean可以直接用来给property指定的属性赋值 -->
+            <!-- 由于内部bean仅限于在bean内部使用，所以可以不配置id属性 -->
+            <bean class="com.stonebridge.domain.HappyMachine">
+                <property name="machineName" value="makeHappy"/>
+            </bean>
+        </property>
+    </bean>
 </beans>
