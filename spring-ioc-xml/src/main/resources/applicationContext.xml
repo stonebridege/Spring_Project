@@ -56,4 +56,18 @@
         <property name="username" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+
+    <!-- 实验七 给bean的属性赋值：级联属性赋值 -->
+    <bean id="happyComponent7" class="com.stonebridge.domain.HappyComponent">
+        <!-- 使用内部bean的形式将happyMachine属性初始化 -->
+        <property name="machine">
+            <!-- 相当于创建了HappyMachine的空对象赋值给happyMachine属性 -->
+            <bean class="com.stonebridge.domain.HappyMachine"/>
+        </property>
+        <!--
+            如果happyMachine属性没有被初始化，那么直接访问级联属性会抛出异常：
+            Caused by: org.springframework.beans.NullValueInNestedPathException: Invalid property 'happyMachine' of bean class [com.atguigu.ioc.component.HappyComponent]: Value of nested property 'happyMachine' is null
+        -->
+        <property name="machine.machineName" value="aaa"/>
+    </bean>
 </beans>

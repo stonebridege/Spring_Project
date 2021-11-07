@@ -74,4 +74,12 @@ public class IocTest {
         Connection connection = dataSource.getConnection();
         System.out.println("connection = " + connection);
     }
+
+    @Test
+    public void testExperiment07() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HappyComponent happyComponent7 = (HappyComponent) context.getBean("happyComponent7");
+        String machineName = happyComponent7.getMachine().getMachineName();
+        System.out.println("machineName = " + machineName);
+    }
 }
