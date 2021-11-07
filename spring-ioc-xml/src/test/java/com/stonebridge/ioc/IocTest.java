@@ -6,6 +6,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 
 public class IocTest {
     // 创建IOC容器对象
@@ -61,5 +65,13 @@ public class IocTest {
         HappyMachine happyMachine = happyComponent5.getMachine();
         String machineName = happyMachine.getMachineName();
         System.out.println("machineName = " + machineName);
+    }
+
+    @Test
+    public void testExperiment06() throws SQLException {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataSource dataSource = context.getBean(DataSource.class);
+        Connection connection = dataSource.getConnection();
+        System.out.println("connection = " + connection);
     }
 }

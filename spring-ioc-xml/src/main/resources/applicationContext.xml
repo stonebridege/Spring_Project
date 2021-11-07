@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 实验一 [重要]创建bean -->
     <!-- bean标签：通过配置bean标签告诉IOC容器需要创建对象的组件是什么 -->
     <!-- id属性：当前bean的唯一标识，设定了这个唯一标识后，在其他地方就可以来引用这个bean -->
@@ -43,5 +44,16 @@
                 <property name="machineName" value="makeHappy"/>
             </bean>
         </property>
+    </bean>
+    <!-- 引入外部属性文件 -->
+    <!-- 使用context名称空间下的property-placeholder标签引入外部属性文件(本质上就是记录外部属性文件的位置) -->
+    <!-- location属性：指定外部属性文件的路径。classpath:表示这个路径从类路径根目录开始 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 实验六 [重要]给bean的属性赋值：引入外部属性文件 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 </beans>
