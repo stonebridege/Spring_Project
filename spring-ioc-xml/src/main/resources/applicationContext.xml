@@ -112,14 +112,23 @@
             </list>
         </property>
         <property name="managerMap">
-<!--            <map>-->
-<!--                <entry key="财务部" value="张三"></entry>-->
-<!--                <entry key="行政部" value="李四"></entry>-->
-<!--            </map>-->
+            <!--            <map>-->
+            <!--                <entry key="财务部" value="张三"></entry>-->
+            <!--                <entry key="行政部" value="李四"></entry>-->
+            <!--            </map>-->
             <props>
                 <prop key="财务部">张三</prop>
                 <prop key="行政部">李四</prop>
             </props>
         </property>
+    </bean>
+    <!-- 实验十二 自动装配 -->
+    <bean id="happyService" class="com.stonebridge.service.HappyService"/>
+    <bean id="happyService2" class="com.stonebridge.service.HappyService"/>
+
+    <!-- 使用bean标签的autowire属性设置自动装配效果 -->
+    <!-- byType表示根据类型进行装配，此时如果类型匹配的bean不止一个，那么会抛NoUniqueBeanDefinitionException -->
+    <!-- byName表示根据bean的id进行匹配。而bean的id是根据需要装配组件的属性的属性名来确定的 -->
+    <bean id="happyController" class="com.stonebridge.controller.HappyController" autowire="byName">
     </bean>
 </beans>

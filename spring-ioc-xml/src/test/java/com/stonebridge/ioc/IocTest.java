@@ -1,9 +1,11 @@
 package com.stonebridge.ioc;
 
+import com.stonebridge.controller.HappyController;
 import com.stonebridge.domain.HappyComponent;
 import com.stonebridge.domain.HappyMachine;
 import com.stonebridge.domain.HappyTeam;
 import com.stonebridge.domain.PropValue;
+import com.stonebridge.service.HappyService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -114,5 +116,13 @@ public class IocTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         HappyTeam happyTeam = (HappyTeam) context.getBean("happyTeam3");
         System.out.println("happyTeam = " + happyTeam);
+    }
+
+    @Test
+    public void testExperiment12() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HappyController happyController = context.getBean(HappyController.class);
+        HappyService happyService = happyController.getHappyService();
+        System.out.println("happyService = " + happyService);
     }
 }
