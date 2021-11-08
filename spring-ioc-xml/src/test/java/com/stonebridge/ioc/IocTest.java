@@ -125,4 +125,12 @@ public class IocTest {
         HappyService happyService = happyController.getHappyService();
         System.out.println("happyService = " + happyService);
     }
+
+    @Test
+    public void testExperiment14() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HappyMachine happyMachine3 = (HappyMachine) context.getBean("happyMachine3");
+        String machineName = happyMachine3.getMachineName();
+        System.out.println("machineName = " + machineName);
+    }
 }

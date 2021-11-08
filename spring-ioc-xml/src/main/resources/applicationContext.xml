@@ -131,4 +131,10 @@
     <!-- byName表示根据bean的id进行匹配。而bean的id是根据需要装配组件的属性的属性名来确定的 -->
     <bean id="happyController" class="com.stonebridge.controller.HappyController" autowire="byName">
     </bean>
+    <!-- 实验十四 FactoryBean机制 -->
+    <!-- 这个bean标签中class属性指定的是HappyFactoryBean，但是将来从这里获取的bean是HappyMachine对象 -->
+    <bean id="happyMachine3" class="com.stonebridge.factory.HappyFactoryBean">
+        <!-- property标签仍然可以用来通过setXxx()方法给属性赋值 -->
+        <property name="machineName" value="iceCreamMachine"/>
+    </bean>
 </beans>
