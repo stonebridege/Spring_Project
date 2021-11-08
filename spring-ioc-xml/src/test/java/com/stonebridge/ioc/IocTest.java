@@ -133,4 +133,14 @@ public class IocTest {
         String machineName = happyMachine3.getMachineName();
         System.out.println("machineName = " + machineName);
     }
+
+    @Test
+    public void testExperiment15() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HappyMachine happyMachine01 = (HappyMachine) context.getBean("happyMachine4");
+        HappyMachine happyMachine02 = (HappyMachine) context.getBean("happyMachine4");
+        System.out.println(happyMachine01 == happyMachine02);
+        System.out.println("happyMachine01.hashCode() = " + happyMachine01.hashCode());
+        System.out.println("happyMachine02.hashCode() = " + happyMachine02.hashCode());
+    }
 }
