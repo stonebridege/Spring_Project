@@ -143,4 +143,12 @@ public class IocTest {
         System.out.println("happyMachine01.hashCode() = " + happyMachine01.hashCode());
         System.out.println("happyMachine02.hashCode() = " + happyMachine02.hashCode());
     }
+    @Test
+    public void testExperiment16() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // 给IOC容器对象转换类型，然后调用close()方法关闭
+        ((ClassPathXmlApplicationContext)context).close();
+
+    }
 }

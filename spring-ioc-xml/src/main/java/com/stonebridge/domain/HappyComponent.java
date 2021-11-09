@@ -19,4 +19,15 @@ public class HappyComponent {
     public void setMachine(HappyMachine machine) {
         this.machine = machine;
     }
+
+    public void happyInitMethod() {
+        System.out.println("HappyComponent初始化");
+    }
+
+    public void happyDestroyMethod() {
+        System.out.println("HappyComponent销毁");
+    }
+
+    public HappyComponent() {
+    }
 }

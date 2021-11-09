@@ -8,139 +8,149 @@
     <!-- bean标签：通过配置bean标签告诉IOC容器需要创建对象的组件是什么 -->
     <!-- id属性：当前bean的唯一标识，设定了这个唯一标识后，在其他地方就可以来引用这个bean -->
     <!-- class属性：指定这个bean要配置的组件的全类名 -->
-    <bean id="happyComponent1" class="com.stonebridge.domain.HappyComponent"/>
+<!--    <bean id="happyComponent1" class="com.stonebridge.domain.HappyComponent"/>-->
 
-    <!-- 实验二 [重要]获取bean -->
-    <bean id="happyComponent2" class="com.stonebridge.domain.HappyComponent"/>
+<!--    &lt;!&ndash; 实验二 [重要]获取bean &ndash;&gt;-->
+<!--    <bean id="happyComponent2" class="com.stonebridge.domain.HappyComponent"/>-->
 
-    <!-- 实验三 [重要]给bean的属性赋值：setter注入 -->
-    <bean id="happyComponent3" class="com.stonebridge.domain.HappyComponent">
+<!--    &lt;!&ndash; 实验三 [重要]给bean的属性赋值：setter注入 &ndash;&gt;-->
+<!--    <bean id="happyComponent3" class="com.stonebridge.domain.HappyComponent">-->
 
-        <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
-        <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关） -->
-        <!-- value属性：指定属性值 -->
-        <property name="name" value="i am very happy"/>
-    </bean>
-    <bean id="happyMachine" class="com.stonebridge.domain.HappyMachine">
-        <property name="machineName" value="makeHappy"/>
-    </bean>
-    <bean id="happyComponent4" class="com.stonebridge.domain.HappyComponent">
-        <!-- 使用外部已经配置好的happyMachine这个bean来给当前组件的happyMachine属性赋值 -->
-        <!-- 引用另外一个bean不能再使用value属性，而要使用ref属性指定bean的id -->
-        <!--
-            如果错把ref属性写成了value属性，会抛出异常：
-            Caused by: java.lang.IllegalStateException: Cannot convert value of type 'java.lang.String' to required type 'com.atguigu.ioc.component.HappyMachine' for property 'happyMachine': no matching editors or conversion strategy found
-            意思是不能把String类型转换成我们要的HappyMachine类型
-            说明我们使用value属性时，Spring只把这个属性看做一个普通的字符串，不会认为这是一个bean的id，更不会根据它去找到bean来赋值
-        -->
-        <property name="machine" ref="happyMachine"/>
-    </bean>
-    <!-- 实验五 [重要]给bean的属性赋值：内部bean -->
-    <bean id="happyComponent5" class="com.stonebridge.domain.HappyComponent">
-        <property name="machine">
-            <!-- 在property标签内部再配置一个bean，这就是内部bean -->
-            <!-- 内部bean可以直接用来给property指定的属性赋值 -->
-            <!-- 由于内部bean仅限于在bean内部使用，所以可以不配置id属性 -->
-            <bean class="com.stonebridge.domain.HappyMachine">
-                <property name="machineName" value="makeHappy"/>
-            </bean>
-        </property>
-    </bean>
-    <!-- 引入外部属性文件 -->
-    <!-- 使用context名称空间下的property-placeholder标签引入外部属性文件(本质上就是记录外部属性文件的位置) -->
-    <!-- location属性：指定外部属性文件的路径。classpath:表示这个路径从类路径根目录开始 -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
-    <!-- 实验六 [重要]给bean的属性赋值：引入外部属性文件 -->
-    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="${jdbc.url}"/>
-        <property name="driverClassName" value="${jdbc.driver}"/>
-        <property name="username" value="${jdbc.user}"/>
-        <property name="password" value="${jdbc.password}"/>
-    </bean>
+<!--        &lt;!&ndash; property标签：通过组件类的setXxx()方法给组件对象设置属性 &ndash;&gt;-->
+<!--        &lt;!&ndash; name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关） &ndash;&gt;-->
+<!--        &lt;!&ndash; value属性：指定属性值 &ndash;&gt;-->
+<!--        <property name="name" value="i am very happy"/>-->
+<!--    </bean>-->
+<!--    <bean id="happyMachine" class="com.stonebridge.domain.HappyMachine">-->
+<!--        <property name="machineName" value="makeHappy"/>-->
+<!--    </bean>-->
+<!--    <bean id="happyComponent4" class="com.stonebridge.domain.HappyComponent">-->
+<!--        &lt;!&ndash; 使用外部已经配置好的happyMachine这个bean来给当前组件的happyMachine属性赋值 &ndash;&gt;-->
+<!--        &lt;!&ndash; 引用另外一个bean不能再使用value属性，而要使用ref属性指定bean的id &ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--            如果错把ref属性写成了value属性，会抛出异常：-->
+<!--            Caused by: java.lang.IllegalStateException: Cannot convert value of type 'java.lang.String' to required type 'com.atguigu.ioc.component.HappyMachine' for property 'happyMachine': no matching editors or conversion strategy found-->
+<!--            意思是不能把String类型转换成我们要的HappyMachine类型-->
+<!--            说明我们使用value属性时，Spring只把这个属性看做一个普通的字符串，不会认为这是一个bean的id，更不会根据它去找到bean来赋值-->
+<!--        &ndash;&gt;-->
+<!--        <property name="machine" ref="happyMachine"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验五 [重要]给bean的属性赋值：内部bean &ndash;&gt;-->
+<!--    <bean id="happyComponent5" class="com.stonebridge.domain.HappyComponent">-->
+<!--        <property name="machine">-->
+<!--            &lt;!&ndash; 在property标签内部再配置一个bean，这就是内部bean &ndash;&gt;-->
+<!--            &lt;!&ndash; 内部bean可以直接用来给property指定的属性赋值 &ndash;&gt;-->
+<!--            &lt;!&ndash; 由于内部bean仅限于在bean内部使用，所以可以不配置id属性 &ndash;&gt;-->
+<!--            <bean class="com.stonebridge.domain.HappyMachine">-->
+<!--                <property name="machineName" value="makeHappy"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 引入外部属性文件 &ndash;&gt;-->
+<!--    &lt;!&ndash; 使用context名称空间下的property-placeholder标签引入外部属性文件(本质上就是记录外部属性文件的位置) &ndash;&gt;-->
+<!--    &lt;!&ndash; location属性：指定外部属性文件的路径。classpath:表示这个路径从类路径根目录开始 &ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
+<!--    &lt;!&ndash; 实验六 [重要]给bean的属性赋值：引入外部属性文件 &ndash;&gt;-->
+<!--    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="url" value="${jdbc.url}"/>-->
+<!--        <property name="driverClassName" value="${jdbc.driver}"/>-->
+<!--        <property name="username" value="${jdbc.user}"/>-->
+<!--        <property name="password" value="${jdbc.password}"/>-->
+<!--    </bean>-->
 
-    <!-- 实验七 给bean的属性赋值：级联属性赋值 -->
-    <bean id="happyComponent7" class="com.stonebridge.domain.HappyComponent">
-        <!-- 使用内部bean的形式将happyMachine属性初始化 -->
-        <property name="machine">
-            <!-- 相当于创建了HappyMachine的空对象赋值给happyMachine属性 -->
-            <bean class="com.stonebridge.domain.HappyMachine"/>
-        </property>
-        <!--
-            如果happyMachine属性没有被初始化，那么直接访问级联属性会抛出异常：
-            Caused by: org.springframework.beans.NullValueInNestedPathException: Invalid property 'happyMachine' of bean class [com.atguigu.ioc.component.HappyComponent]: Value of nested property 'happyMachine' is null
-        -->
-        <property name="machine.machineName" value="aaa"/>
-    </bean>
-    <bean id="happyTeam" class="com.stonebridge.domain.HappyTeam">
-        <!-- 调用类的构造器创建对象并同时传入参数值 -->
-        <!-- constructor-arg标签：给构造器对应位置传入参数 -->
-        <!-- index属性：指定当前参数在参数列表中的索引位置 -->
-        <!-- name属性：指定当前参数的参数名 -->
-        <!-- value属性：指定参数值 -->
-        <constructor-arg name="teamName" value="gaysTeam"/>
-        <constructor-arg name="memberCount" value="10"/>
-        <constructor-arg name="memberSalary" value="555.55"/>
-    </bean>
-    <bean id="propValue" class="com.stonebridge.domain.PropValue">
-        <!-- 使用value属性给bean的属性赋值时，Spring会把value属性的值看做字面量 -->
-        <property name="commonValue" value="hello"/>
-    </bean>
-    <!-- 实验九 给bean的属性赋值：特殊值处理 -->
-    <bean id="propValue1" class="com.stonebridge.domain.PropValue">
-        <!-- 小于号在XML文档中用来定义标签的开始，不能随便使用 -->
-        <!-- 解决方案一：使用XML实体来代替 -->
-        <property name="expression" value="a &lt; b"/>
-    </bean>
-    <!-- 实验九 给bean的属性赋值：特殊值处理 -->
-    <bean id="propValue2" class="com.stonebridge.domain.PropValue">
-        <property name="expression">
-            <!-- 解决方案二：使用CDATA节 -->
-            <!-- CDATA中的C代表Character，是文本、字符的含义，CDATA就表示纯文本数据 -->
-            <!-- XML解析器看到CDATA节就知道这里是纯文本，就不会当作XML标签或属性来解析 -->
-            <!-- 所以CDATA节中写什么符号都随意 -->
-            <value><![CDATA[a < b]]></value>
-        </property>
-    </bean>
-    <bean id="propValue3" class="com.stonebridge.domain.PropValue" p:commonValue="commonValue11111"/>
+<!--    &lt;!&ndash; 实验七 给bean的属性赋值：级联属性赋值 &ndash;&gt;-->
+<!--    <bean id="happyComponent7" class="com.stonebridge.domain.HappyComponent">-->
+<!--        &lt;!&ndash; 使用内部bean的形式将happyMachine属性初始化 &ndash;&gt;-->
+<!--        <property name="machine">-->
+<!--            &lt;!&ndash; 相当于创建了HappyMachine的空对象赋值给happyMachine属性 &ndash;&gt;-->
+<!--            <bean class="com.stonebridge.domain.HappyMachine"/>-->
+<!--        </property>-->
+<!--        &lt;!&ndash;-->
+<!--            如果happyMachine属性没有被初始化，那么直接访问级联属性会抛出异常：-->
+<!--            Caused by: org.springframework.beans.NullValueInNestedPathException: Invalid property 'happyMachine' of bean class [com.atguigu.ioc.component.HappyComponent]: Value of nested property 'happyMachine' is null-->
+<!--        &ndash;&gt;-->
+<!--        <property name="machine.machineName" value="aaa"/>-->
+<!--    </bean>-->
+<!--    <bean id="happyTeam" class="com.stonebridge.domain.HappyTeam">-->
+<!--        &lt;!&ndash; 调用类的构造器创建对象并同时传入参数值 &ndash;&gt;-->
+<!--        &lt;!&ndash; constructor-arg标签：给构造器对应位置传入参数 &ndash;&gt;-->
+<!--        &lt;!&ndash; index属性：指定当前参数在参数列表中的索引位置 &ndash;&gt;-->
+<!--        &lt;!&ndash; name属性：指定当前参数的参数名 &ndash;&gt;-->
+<!--        &lt;!&ndash; value属性：指定参数值 &ndash;&gt;-->
+<!--        <constructor-arg name="teamName" value="gaysTeam"/>-->
+<!--        <constructor-arg name="memberCount" value="10"/>-->
+<!--        <constructor-arg name="memberSalary" value="555.55"/>-->
+<!--    </bean>-->
+<!--    <bean id="propValue" class="com.stonebridge.domain.PropValue">-->
+<!--        &lt;!&ndash; 使用value属性给bean的属性赋值时，Spring会把value属性的值看做字面量 &ndash;&gt;-->
+<!--        <property name="commonValue" value="hello"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验九 给bean的属性赋值：特殊值处理 &ndash;&gt;-->
+<!--    <bean id="propValue1" class="com.stonebridge.domain.PropValue">-->
+<!--        &lt;!&ndash; 小于号在XML文档中用来定义标签的开始，不能随便使用 &ndash;&gt;-->
+<!--        &lt;!&ndash; 解决方案一：使用XML实体来代替 &ndash;&gt;-->
+<!--        <property name="expression" value="a &lt; b"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验九 给bean的属性赋值：特殊值处理 &ndash;&gt;-->
+<!--    <bean id="propValue2" class="com.stonebridge.domain.PropValue">-->
+<!--        <property name="expression">-->
+<!--            &lt;!&ndash; 解决方案二：使用CDATA节 &ndash;&gt;-->
+<!--            &lt;!&ndash; CDATA中的C代表Character，是文本、字符的含义，CDATA就表示纯文本数据 &ndash;&gt;-->
+<!--            &lt;!&ndash; XML解析器看到CDATA节就知道这里是纯文本，就不会当作XML标签或属性来解析 &ndash;&gt;-->
+<!--            &lt;!&ndash; 所以CDATA节中写什么符号都随意 &ndash;&gt;-->
+<!--            <value><![CDATA[a < b]]></value>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="propValue3" class="com.stonebridge.domain.PropValue" p:commonValue="commonValue11111"/>-->
 
-    <bean id="happyTeam3" class="com.stonebridge.domain.HappyTeam">
-        <property name="memNameList">
-            <list>
-                <value>111a111</value>
-                <value>222w222</value>
-                <value>3333s33</value>
-            </list>
-        </property>
-        <property name="managerMap">
-            <!--            <map>-->
-            <!--                <entry key="财务部" value="张三"></entry>-->
-            <!--                <entry key="行政部" value="李四"></entry>-->
-            <!--            </map>-->
-            <props>
-                <prop key="财务部">张三</prop>
-                <prop key="行政部">李四</prop>
-            </props>
-        </property>
-    </bean>
-    <!-- 实验十二 自动装配 -->
-    <bean id="happyService" class="com.stonebridge.service.HappyService"/>
-    <bean id="happyService2" class="com.stonebridge.service.HappyService"/>
+<!--    <bean id="happyTeam3" class="com.stonebridge.domain.HappyTeam">-->
+<!--        <property name="memNameList">-->
+<!--            <list>-->
+<!--                <value>111a111</value>-->
+<!--                <value>222w222</value>-->
+<!--                <value>3333s33</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="managerMap">-->
+<!--            &lt;!&ndash;            <map>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <entry key="财务部" value="张三"></entry>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <entry key="行政部" value="李四"></entry>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </map>&ndash;&gt;-->
+<!--            <props>-->
+<!--                <prop key="财务部">张三</prop>-->
+<!--                <prop key="行政部">李四</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验十二 自动装配 &ndash;&gt;-->
+<!--    <bean id="happyService" class="com.stonebridge.service.HappyService"/>-->
+<!--    <bean id="happyService2" class="com.stonebridge.service.HappyService"/>-->
 
-    <!-- 使用bean标签的autowire属性设置自动装配效果 -->
-    <!-- byType表示根据类型进行装配，此时如果类型匹配的bean不止一个，那么会抛NoUniqueBeanDefinitionException -->
-    <!-- byName表示根据bean的id进行匹配。而bean的id是根据需要装配组件的属性的属性名来确定的 -->
-    <bean id="happyController" class="com.stonebridge.controller.HappyController" autowire="byName">
+<!--    &lt;!&ndash; 使用bean标签的autowire属性设置自动装配效果 &ndash;&gt;-->
+<!--    &lt;!&ndash; byType表示根据类型进行装配，此时如果类型匹配的bean不止一个，那么会抛NoUniqueBeanDefinitionException &ndash;&gt;-->
+<!--    &lt;!&ndash; byName表示根据bean的id进行匹配。而bean的id是根据需要装配组件的属性的属性名来确定的 &ndash;&gt;-->
+<!--    <bean id="happyController" class="com.stonebridge.controller.HappyController" autowire="byName">-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验十四 FactoryBean机制 &ndash;&gt;-->
+<!--    &lt;!&ndash; 这个bean标签中class属性指定的是HappyFactoryBean，但是将来从这里获取的bean是HappyMachine对象 &ndash;&gt;-->
+<!--    <bean id="happyMachine3" class="com.stonebridge.factory.HappyFactoryBean">-->
+<!--        &lt;!&ndash; property标签仍然可以用来通过setXxx()方法给属性赋值 &ndash;&gt;-->
+<!--        <property name="machineName" value="iceCreamMachine"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 实验十五 bean的作用域 &ndash;&gt;-->
+<!--    &lt;!&ndash; scope属性：取值singleton（默认值），bean在IOC容器中只有一个实例，IOC容器初始化时创建对象 &ndash;&gt;-->
+<!--    &lt;!&ndash; scope属性：取值prototype，bean在IOC容器中可以有多个实例，getBean()时创建对象 &ndash;&gt;-->
+<!--    <bean id="happyMachine4" scope="prototype" class="com.stonebridge.domain.HappyMachine">-->
+<!--        <property name="machineName" value="iceCreamMachine"/>-->
+<!--    </bean>-->
+    <!-- 实验十六 bean的生命周期 -->
+    <!-- 使用init-method属性指定初始化方法 -->
+    <!-- 使用destroy-method属性指定销毁方法 -->
+    <bean id="happyComponent" class="com.stonebridge.domain.HappyComponent"
+          init-method="happyInitMethod"
+          destroy-method="happyDestroyMethod">
+        <property name="name" value="uuu"/>
     </bean>
-    <!-- 实验十四 FactoryBean机制 -->
-    <!-- 这个bean标签中class属性指定的是HappyFactoryBean，但是将来从这里获取的bean是HappyMachine对象 -->
-    <bean id="happyMachine3" class="com.stonebridge.factory.HappyFactoryBean">
-        <!-- property标签仍然可以用来通过setXxx()方法给属性赋值 -->
-        <property name="machineName" value="iceCreamMachine"/>
-    </bean>
-    <!-- 实验十五 bean的作用域 -->
-    <!-- scope属性：取值singleton（默认值），bean在IOC容器中只有一个实例，IOC容器初始化时创建对象 -->
-    <!-- scope属性：取值prototype，bean在IOC容器中可以有多个实例，getBean()时创建对象 -->
-    <bean id="happyMachine4" scope="prototype" class="com.stonebridge.domain.HappyMachine">
-        <property name="machineName" value="iceCreamMachine"/>
-    </bean>
+    <!-- bean的后置处理器要放入IOC容器才能生效 -->
+    <bean id="myHappyBeanProcessor" class="com.stonebridge.process.MyHappyBeanProcessor"/>
 </beans>
