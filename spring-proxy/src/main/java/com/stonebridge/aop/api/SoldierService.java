@@ -1,4 +1,4 @@
-package com.stonebridge.proxy.api;
+package com.stonebridge.aop.api;
 
 public interface SoldierService {
     int saveSoldier(String soldierName);

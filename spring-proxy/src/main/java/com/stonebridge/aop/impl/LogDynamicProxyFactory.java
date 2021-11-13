@@ -1,4 +1,4 @@
-package com.stonebridge.proxy.impl;
+package com.stonebridge.aop.impl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

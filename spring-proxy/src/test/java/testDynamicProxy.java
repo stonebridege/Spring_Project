@@ -1,8 +1,8 @@
-import com.stonebridge.proxy.api.Calculate;
-import com.stonebridge.proxy.api.SoldierService;
-import com.stonebridge.proxy.impl.CalculatorPureImpl;
-import com.stonebridge.proxy.impl.LogDynamicProxyFactory;
-import com.stonebridge.proxy.impl.SoldierServiceImpl;
+import com.stonebridge.aop.api.Calculate;
+import com.stonebridge.aop.api.SoldierService;
+import com.stonebridge.aop.impl.CalculatorPureImpl;
+import com.stonebridge.aop.impl.LogDynamicProxyFactory;
+import com.stonebridge.aop.impl.SoldierServiceImpl;
 import org.junit.Test;
 
 public class testDynamicProxy {

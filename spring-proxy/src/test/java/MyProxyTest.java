@@ -1,5 +1,5 @@
-import com.stonebridge.proxy.api.Calculate;
-import com.stonebridge.proxy.impl.CalculatorPureImpl;
+import com.stonebridge.aop.api.Calculate;
+import com.stonebridge.aop.impl.CalculatorPureImpl;
 import org.junit.Test;
 
 public class MyProxyTest {

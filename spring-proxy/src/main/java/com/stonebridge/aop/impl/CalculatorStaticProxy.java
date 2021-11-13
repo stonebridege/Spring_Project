@@ -1,6 +1,6 @@
-package com.stonebridge.proxy.impl;
+package com.stonebridge.aop.impl;
 
-import com.stonebridge.proxy.api.Calculate;
+import com.stonebridge.aop.api.Calculate;
 
 public class CalculatorStaticProxy implements Calculate {
     // 将被代理的目标对象声明为成员变量
