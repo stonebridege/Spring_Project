@@ -1,6 +1,6 @@
-package com.stonebridge.proxy.impl;
+package com.stonebridge.aop.impl;
 
-import com.stonebridge.proxy.api.SoldierService;
+import com.stonebridge.aop.api.SoldierService;
 
 public class SoldierServiceImpl implements SoldierService {
     @Override
