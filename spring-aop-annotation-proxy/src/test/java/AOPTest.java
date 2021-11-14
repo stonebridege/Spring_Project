@@ -16,8 +16,8 @@ public class AOPTest {
 
     @Test
     public void testAnnotationAOP() {
-        int add = calculator.add(10, 2);
+//        int add = calculator.div(9, 0);
+        int add = calculator.add(9, 0);
         System.out.println("方法外部 add = " + add);
     }
-
 }
