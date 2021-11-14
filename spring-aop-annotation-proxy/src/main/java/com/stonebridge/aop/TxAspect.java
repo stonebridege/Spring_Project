@@ -4,6 +4,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 
 @Aspect
 @Component
+@Order(6)
 public class TxAspect {
     @Around(value = "com.stonebridge.aop.AtguiguPointCut.atguiguGlobalPointCut()")
     // 通过在通知方法形参位置声明ProceedingJoinPoint类型的形参，

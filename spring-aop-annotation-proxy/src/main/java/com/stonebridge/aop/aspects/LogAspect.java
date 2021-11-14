@@ -3,6 +3,7 @@ package com.stonebridge.aop.aspects;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import java.util.List;
 @Aspect
 // @Component注解保证这个切面类能够放入IOC容器
 @Component
+@Order(7)
 public class LogAspect {
 
     // @Before注解：声明当前方法是前置通知方法
