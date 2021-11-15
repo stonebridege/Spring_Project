@@ -14,6 +14,8 @@
         <module>spring-proxy</module>
         <module>spring-aop-annotation-proxy</module>
         <module>spring-aop-xml</module>
+        <module>spring-JdbcTemplate</module>
+        <module>spring-tx</module>
     </modules>
 
     <properties>
