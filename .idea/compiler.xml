@@ -2,14 +2,18 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-proxy" />
-        <module name="spring-ioc-annotation" />
         <module name="spring-aop-annotation-proxy" />
+        <module name="spring-tx" />
+        <module name="spring-ioc-annotation" />
         <module name="spring-ioc-xml" />
+        <module name="spring-aop-xml" />
+        <module name="spring-JdbcTemplate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
