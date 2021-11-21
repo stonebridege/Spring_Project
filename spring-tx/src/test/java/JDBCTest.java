@@ -65,8 +65,22 @@ public class JDBCTest {
         Double newSalary = 8989.00;
         empService.updateTwice(empId4EditName, newName, empId4EditSalary, newSalary);
     }
+
     @Test
     public void testJdbcTemplate5() {
         System.out.println(empService.getEmpName(700));
+    }
+
+    @Test
+    public void testTxReadOnly() {
+        String empName = empService.getEmpName(700);
+        System.out.println("empName = " + empName);
+    }
+
+    @Test
+    public void testIsolation() {
+        Integer empId = 700;
+        String empName = "aaaaaaaa";
+        empService.updateEmpName(empId, empName);
     }
 }

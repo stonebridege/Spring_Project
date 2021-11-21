@@ -3,6 +3,7 @@ package com.stonebridge.service;
 import com.stonebridge.dao.EmpDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -26,7 +27,13 @@ public class EmpService {
         empDao.updateEmpSalaryById(empId4EditSalary, newSalary);
     }
 
+    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public String getEmpName(Integer empId) {
         return empDao.selectEmpNameById(empId);
+    }
+
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void updateEmpName(Integer empId, String empName) {
+        empDao.updateEmpNameById(empId, empName);
     }
 }
