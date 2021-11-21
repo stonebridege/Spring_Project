@@ -17,7 +17,6 @@ public class EmpDao {
     public void updateEmpNameById(Integer empId, String empName) {
         String sql = "update t_emp set emp_name=? where emp_id=?";
         jdbcTemplate.update(sql, empName, empId);
-        System.out.println(10 / 0);
     }
 
     public void updateEmpSalaryById(Integer empId, Double salary) {

@@ -1,6 +1,7 @@
 import com.stonebridge.dao.EmpDao;
 import com.stonebridge.domain.Emp;
 import com.stonebridge.service.EmpService;
+import com.stonebridge.service.TopService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,5 +83,13 @@ public class JDBCTest {
         Integer empId = 700;
         String empName = "aaaaaaaa";
         empService.updateEmpName(empId, empName);
+    }
+    @Autowired
+    private TopService topService;
+
+    @Test
+    public void testPropagation() {
+        // 调用外层方法
+        topService.topTxMethod();
     }
 }
