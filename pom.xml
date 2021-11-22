@@ -16,6 +16,8 @@
         <module>spring-aop-xml</module>
         <module>spring-JdbcTemplate</module>
         <module>spring-tx</module>
+        <module>spring-tx-xml</module>
+        <module>pro-ssm-integration</module>
     </modules>
 
     <properties>
