@@ -11,6 +11,8 @@
         <module name="spring-aop-annotation-proxy" />
         <module name="spring-tx" />
         <module name="spring-ioc-annotation" />
+        <module name="spring-tx-xml" />
+        <module name="pro-ssm-integration" />
         <module name="spring-ioc-xml" />
         <module name="spring-aop-xml" />
         <module name="spring-JdbcTemplate" />
